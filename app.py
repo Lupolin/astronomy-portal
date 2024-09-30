@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, redirect, url_for, flash, ses
 import secrets
 from flask_sqlalchemy import SQLAlchemy
 import requests
+import bcrypt # 帳號密碼加密
+
 
 app = Flask(__name__)
 app.secret_key = secrets.token_hex(32)
@@ -49,7 +51,9 @@ def login():
 
         # 在資料庫中查詢使用者
         user = User.query.filter_by(username=username).first()
-        if user and user.password == password:
+
+        # 驗證密碼
+        if user and bcrypt.checkpw(password.encode('utf-8'), user.password.encode()):
             session['username'] = username  # 記錄使用者會話
             return redirect(url_for('dashboard'))
         else:
@@ -69,8 +73,11 @@ def signup():
             flash('Username already exists!')
             return redirect(url_for('signup'))
         else:
+            # 密碼加密
+            hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+
             # 創建新使用者並保存到資料庫
-            new_user = User(username=username, password=password)
+            new_user = User(username=username, password=hashed_password.decode('utf-8'))
             db.session.add(new_user)
             db.session.commit()
 
@@ -79,6 +86,16 @@ def signup():
             flash('Sign up successful! You are now logged in.')
             return redirect(url_for('dashboard'))
     return render_template('signup.html')
+
+@app.route('/admin/users')
+@login_required  # 限制只有登錄的使用者可以訪問
+def show_users():
+    # 從資料庫中查詢所有使用者
+    users = User.query.all()
+    
+    # 將使用者清單傳遞給模板進行顯示
+    return render_template('show_users.html', users=users)
+
 
 @app.route('/dashboard')
 @login_required  # 限制只有登錄用戶才能訪問

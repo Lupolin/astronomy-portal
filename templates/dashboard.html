@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>儀表板</title>
+    <title>NASA's Picture</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='dashboard_styles.css') }}">
 </head>
 <body>
     <header>
-        <h1>歡迎來到儀表板</h1>
-        <p>這裡顯示 NASA 的天文每日一圖 (APOD)</p>
+        <h1>NASA 的天文每日一圖 (APOD)</h1>
     </header>
 
     <main>
@@ -21,7 +20,7 @@
     </main>
 
     <footer>
-        <p>© 2024 儀表板</p>
+        <p><a href="{{ url_for('show_users') }}">Show Users</a></p>
     </footer>
 
     <script>
