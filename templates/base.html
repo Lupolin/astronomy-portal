@@ -3,31 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}天文網站{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Astronomy Website</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='images/web_icon.jpg') }}" type="image/jpeg">
+    <!-- 區塊用於在其他模板中添加額外的 CSS -->
+    {% block extra_css %}
+    {% endblock %}
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                {% if 'username' in session %}
-                    <li><a href="{{ url_for('logout') }}">登出</a></li>
-                    <li>歡迎, {{ session['username'] }}!</li>
-                {% else %}
-                    <li><a href="{{ url_for('login') }}">登入</a></li>
-                    <li><a href="{{ url_for('signup') }}">註冊</a></li>
-                {% endif %}
-            </ul>
-        </nav>
-    </header>
-
     <main>
+        <div id="hover-area"></div>
+        <header id="top-bar">
+            <nav>
+                <ul>
+                    {% if current_page != 'home' %}
+                    <li><a href="/">Home</a></li>
+                    {% endif %}
+                    {% if current_page != 'telescopes' %}
+                    <li><a href="/telescopes">Telescopes</a></li>
+                    {% endif %}
+                    {% if current_page != 'planets' %}
+                    <li><a href="/planets">Planets</a></li>
+                    {% endif %}
+                    {% if current_page != 'galaxies' %}
+                    <li><a href="/galaxies">Galaxies</a></li>
+                    {% endif %}
+                    <li><a href="/logout">Log Out</a></li>
+                </ul>
+            </nav>
+        </header>
         {% block content %}
         {% endblock %}
+        <section class="content-section" id="features">
+            {% if current_page != 'home' %}
+            <a href="/">
+                <div class="feature-card">
+                    <h2>Home</h2>
+                    <img src="{{ url_for('static', filename='images/home.jpg') }}" alt="Home Image">
+                    <p>Explore the beauty of the night sky.</p>
+                </div>
+            </a>
+            {% endif %}
+
+            {% if current_page != 'telescopes' %}
+            <a href="/telescopes">
+                <div class="feature-card">
+                    <h2>Telescopes</h2>
+                    <img src="{{ url_for('static', filename='images/telescope.jpg') }}" alt="Telescope Image">
+                    <p>Learn about observation tools.</p>
+                </div>
+            </a>
+            {% endif %}
+
+            {% if current_page != 'planets' %}
+            <a href="/planets">
+                <div class="feature-card">
+                    <h2>Planets</h2>
+                    <img src="{{ url_for('static', filename='images/planet.jpg') }}" alt="Planet Image">
+                    <p>Explore our solar system.</p>
+                </div>
+            </a>
+            {% endif %}
+
+            {% if current_page != 'galaxies' %}
+            <a href="/galaxies">
+                <div class="feature-card">
+                    <h2>Galaxies</h2>
+                    <img src="{{ url_for('static', filename='images/galaxy.jpg') }}" alt="Galaxy Image">
+                    <p>Stunning galaxy displays.</p>
+                </div>
+            </a>
+            {% endif %}
+        </section> 
     </main>
 
+    <script>
+        // Top-bar滾動隱藏效果
+        const topBar = document.getElementById('top-bar');
+        let lastScrollY = window.scrollY;
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100 && window.scrollY > lastScrollY) {
+                // 當向下滾動且滾動距離大於 100px 時，隱藏 Top-bar
+                topBar.style.top = '-80px';
+            } else {
+                // 向上滾動時，顯示 Top-bar
+                topBar.style.top = '0';
+            }
+            lastScrollY = window.scrollY;
+        });
+    </script>
+
     <footer>
-        <p>© 2024 天文網站</p>
+        <p>© 2024 Astronomy Website</p>
     </footer>
 </body>
 </html>

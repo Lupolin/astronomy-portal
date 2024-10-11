@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='login_signup.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='images/web_icon.jpg') }}" type="image/jpeg">
+    <title>會員登入與註冊</title>
+</head>
+<body>
+    <div class="container">
+        <!-- Tab Navigation -->
+        <div class="tab">
+            <button class="tablinks" onclick="openForm(event, 'Login')">Log In</button>
+            <button class="tablinks" onclick="openForm(event, 'Signup')">Sign Up</button>
+        </div>
+
+        <!-- Login Form -->
+        <div id="Login" class="tabcontent" style="display: none;">
+            <form method="POST" action="{{ url_for('login') }}">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="電子信箱或手機號碼" required>
+                <br>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="密碼" required>
+                <br>
+                <button type="submit" class="btn">Submit</button>
+            </form>
+        </div>
+
+        <!-- Signup Form -->
+        <div id="Signup" class="tabcontent" style="display: none;">
+            <form method="POST" action="{{ url_for('signup') }}">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="Username" required>
+                <br>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+                <br>
+                <button type="submit" class="btn">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // 打開對應的表單，並且改變 URL hash
+        function openForm(evt, formName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(formName).style.display = "block";
+            evt.currentTarget.className += " active";
+
+            // 修改 URL 的 hash，這樣 URL 會變成 #Login 或 #Signup
+            window.location.hash = formName;
+        }
+
+        // 頁面加載時檢查 URL 的 hash，顯示對應的表單
+        window.onload = function() {
+            var hash = window.location.hash.substring(1); // 去掉 #
+            if (hash === "Signup" || hash === "Login") {
+                document.getElementById(hash).style.display = "block";
+                var tabButton = document.querySelector(`button[onclick="openForm(event, '${hash}')"]`);
+                if (tabButton) {
+                    tabButton.className += " active";
+                }
+            } else {
+                // 預設顯示登入表單
+                document.getElementById("Login").style.display = "block";
+                document.querySelector('button[onclick="openForm(event, \'Login\')"]').className += " active";
+            }
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+#live-stream {
+    margin-top: 80px; /* 調整整個區塊的位置，確保與導航欄不重疊 */
+}
+
+#live-stream h2 {
+    color: white; /* 保持 h2 標題的白色字體 */
+    margin-top: 40px; /* 增加上方間距，使文字進一步下移 */
+    text-align: center; /* 文字居中 */
+}
+
+#live-stream p {
+    color: white; /* 將 p 文字顏色改為白色 */
+    text-align: center; /* 讓文字置中顯示（可選） */
+    margin-top: 10px; /* 增加段落上方的間距，防止與標題重疊 */
+    margin-bottom: 15px; /* 增加段落的下間距，使內容更清晰 */
+}
+
+#info h3, p {
+    color: white; /* 將 p 文字顏色改為白色 */
+    text-align: center; /* 讓文字置中顯示（可選） */
+    margin-top: 15px; /* 增加段落上方的間距，防止與標題重疊 */
+    margin-bottom: 20px; /* 增加段落的下間距，使內容更清晰 */
+}
+
+#info p {
+    color: white; /* 將 p 文字顏色改為白色 */
+    text-align: left; /* 讓文字置左顯示（可選） */
+    margin: 15px 0 20px 15px;
+}
+
+.video-container {
+    max-width: 60%; /* 縮小 video-container 的寬度 */
+    max-height: 60%; /* 縮小 video-container 的高度 */
+    margin: 0 auto; /* 使 video-container 置中 */
+    border: 2px solid white; /* 添加邊框以突出顯示影片（可選） */
+    border-radius: 8px; /* 圓角邊框 */
+}

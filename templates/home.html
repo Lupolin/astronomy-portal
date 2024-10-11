@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Your Gateway to the Universe</h1>
+            <p>Explore the stars, dive into galaxies, and discover the beauty of space.</p>
+            <button onclick="openModal()">NASA Picture of the Day</button>
+        </div>
+    </div>  
+    
+    <!-- 模態對話框 -->
+    <div id="modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <main>
+                <section id="apod-section">
+                    <h2 id="apod-title">載入中...</h2>
+                    <img id="apod-image" src="" alt="今日的天文圖像" style="max-width: 100%; height: auto;">
+                    <p id="apod-description"></p>
+                    <button class="close-button" onclick="closeModal()">Close</button>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // 打開模態對話框
+        function openModal() {
+            document.getElementById("modal").style.display = "block";
+        }
+
+        // 關閉模態對話框
+        function closeModal() {
+            document.getElementById("modal").style.display = "none";
+        }
+
+        // 獲取 NASA APOD 數據的函數
+        fetch('/api/nasa/apod')
+            .then(response => response.json())
+            .then(data => {
+                if (data.url && data.media_type === 'image') {
+                    document.getElementById('apod-title').textContent = data.title;
+                    document.getElementById('apod-image').src = data.url;
+                    document.getElementById('apod-description').textContent = data.explanation;
+                } else {
+                    document.getElementById('apod-title').textContent = '無法顯示圖片';
+                    document.getElementById('apod-description').textContent = '未能成功獲取圖片數據';
+                }
+            })
+            .catch(error => {
+                document.getElementById('apod-title').textContent = '無法獲取NASA數據';
+            });
+    </script>
+{% endblock %}
