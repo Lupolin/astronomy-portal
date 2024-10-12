@@ -1,5 +1,38 @@
 {% extends "base.html" %}
 {% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='galaxies.css') }}">
 {% endblock %}
 {% block content %}
+<div class="container">
+    <h2>Galaxy Comments</h2>
+
+    <!-- 留言表單 -->
+    <form action="{{ url_for('submit_comment') }}" method="POST">
+        <div class="comment-container">
+            <textarea class="comment-input" placeholder="Leave your comment..." name="content"></textarea>
+            <div class="comment-actions">
+                <button type="button" class="cancel-button">Cancel</button>
+                <button type="submit" class="submit-button">Submit</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- 展示留言 -->
+    <div class="comments-list">
+        <h3>Comments:</h3>
+        {% if comments %}
+            {% for comment in comments %}
+            <div class="comment">
+                <div class="comment-header">
+                    <strong>{{ comment.user.username }}</strong>
+                    <span class="timestamp">{{ comment.timestamp.strftime('%Y-%m-%d %H:%M') }}</span>
+                </div>
+                <p>{{ comment.content }}</p>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p>No comments yet. Be the first to comment!</p>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}
