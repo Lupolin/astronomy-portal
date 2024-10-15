@@ -1,5 +1,111 @@
 {% extends "base.html" %}
+
 {% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='planets.css') }}">
 {% endblock %}
+
 {% block content %}
+<h1 class="planet-header">Introduction to the Eight Planets</h1>
+
+<div class="planet-gallery">
+    <div class="planet-item" onclick="openModal('Mercury')">
+        <img src="{{ url_for('static', filename='images/planets/mercury.jpg') }}" alt="Mercury">
+        <p>Mercury</p>
+    </div>
+    <div class="planet-item" onclick="openModal('Venus')">
+        <img src="{{ url_for('static', filename='images/planets/venus.jpg') }}" alt="Venus">
+        <p>Venus</p>
+    </div>
+    <div class="planet-item" onclick="openModal('Earth')">
+        <img src="{{ url_for('static', filename='images/planets/earth.jpg') }}" alt="Earth">
+        <p>Earth</p>
+    </div>
+    <div class="planet-item" onclick="openModal('Mars')">
+        <img src="{{ url_for('static', filename='images/planets/mars.jpg') }}" alt="Mars">
+        <p>Mars</p>
+    </div>
+    <div class="planet-item" onclick="openModal('Jupiter')">
+        <img src="{{ url_for('static', filename='images/planets/jupiter.jpg') }}" alt="Jupiter">
+        <p>Jupiter</p>
+    </div>
+    <div class="planet-item" onclick="openModal('Saturn')">
+        <img src="{{ url_for('static', filename='images/planets/saturn.jpg') }}" alt="Saturn">
+        <p>Saturn</p>
+    </div>
+    <div class="planet-item" onclick="openModal('Uranus')">
+        <img src="{{ url_for('static', filename='images/planets/uranus.jpg') }}" alt="Uranus">
+        <p>Uranus</p>
+    </div>
+    <div class="planet-item" onclick="openModal('Neptune')">
+        <img src="{{ url_for('static', filename='images/planets/neptune.jpg') }}" alt="Neptune">
+        <p>Neptune</p>
+    </div>
+</div>
+
+<!-- Modal for planet description -->
+<div id="planetModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2 id="planetName"></h2>
+        <p id="planetDescription"></p>
+    </div>
+</div>
+
+<script>
+    // Planet data
+    const planetData = {
+        'Mercury': {
+            name: 'Mercury',
+            description: 'Mercury is the closest planet to the Sun in the solar system and also the smallest. Due to its proximity to the Sun, the temperature difference between day and night is extreme, reaching up to 430°C during the day and dropping to -180°C at night. The surface of Mercury is heavily cratered, resembling the Moon. Features: No atmosphere, crater-covered surface. A day: One day on Mercury is equivalent to 176 Earth days.'
+        },
+        'Venus': {
+            name: 'Venus',
+            description: 'Venus is the planet most similar to Earth in the solar system, with a comparable size and composition. However, it has a very thick atmosphere made mostly of carbon dioxide, leading to an extreme greenhouse effect. The surface temperature of Venus reaches up to 465°C, making it the hottest planet in the solar system. Features: Retrograde rotation (opposite to most planets), extremely high surface temperature. A day: A day on Venus is longer than a year, with a single rotation taking about 243 Earth days, while it takes about 225 Earth days to orbit the Sun.'
+        },
+        'Earth': {
+            name: 'Earth',
+            description: 'Earth is the only planet in the solar system known to harbor life, with abundant water resources and an atmosphere conducive to life. Its surface is covered by water, land, and an atmosphere, making it an ideal place for life to thrive. Features: An atmosphere suitable for life, water resources, and a stable climate. A day: The rotation period of Earth is 24 hours.'
+        },
+        'Mars': {
+            name: 'Mars',
+            description: 'Mars is one of the closest planets to Earth in the solar system, with a reddish appearance due to the high concentration of iron oxide. Mars has a dry, cold climate with a thin atmosphere, but scientists continue to explore whether Mars once had water or even life. Features: Known as the "Red Planet," it has giant volcanoes (like Olympus Mons) and deep canyons (like Valles Marineris). A day: A day on Mars is about 24.6 hours.'
+        },
+        'Jupiter': {
+            name: 'Jupiter',
+            description: 'Jupiter is the largest planet in the solar system, with a mass more than 2.5 times the combined mass of all the other planets. Jupiter is a gas giant with no solid surface, composed primarily of hydrogen and helium. The famous Great Red Spot is a massive storm system that has been ongoing for centuries. Features: Massive storm system (Great Red Spot), at least 79 moons. A day: A day on Jupiter is very short, lasting only about 10 hours.'
+        },
+        'Saturn': {
+            name: 'Saturn',
+            description: 'Saturn is renowned for its spectacular rings, which are primarily composed of ice and small particles. Saturn is also a gas giant, primarily composed of hydrogen and helium. It is the second-largest planet in the solar system and has many moons, the most famous being Titan. Features: A prominent ring system, at least 82 moons. A day: A day on Saturn lasts about 10.7 hours.'
+        },
+        'Uranus': {
+            name: 'Uranus',
+            description: 'Uranus is an ice giant, containing large amounts of water, ammonia, and methane ice. Unlike other planets, Uranus has an axial tilt that is nearly sideways, leading to very unusual seasonal changes. Its bluish-green color comes from methane in its atmosphere. Features: Sideways rotation, extremely low surface temperature. A day: A day on Uranus lasts about 17 hours.'
+        },
+        'Neptune': {
+            name: 'Neptune',
+            description: 'Neptune is the outermost planet in the solar system and the farthest gas giant from the Sun. Its blue color comes from methane in its atmosphere, and it experiences powerful storms and strong winds. Neptune\'s wind speeds can reach up to 2,100 kilometers per hour, the fastest in the solar system. Features: Intense storms, very high wind speeds. A day: A day on Neptune lasts about 16 hours.'
+        }
+    };
+
+    // 打開模態框並顯示行星資訊
+    function openModal(planet) {
+        document.getElementById("planetName").innerText = planetData[planet].name;
+        document.getElementById("planetDescription").innerText = planetData[planet].description;
+        document.getElementById("planetModal").style.display = "block";
+    }
+
+    // 關閉模態框
+    function closeModal() {
+        document.getElementById("planetModal").style.display = "none";
+    }
+
+    // 點擊模態框外部區域關閉模態框
+    window.onclick = function(event) {
+        var modal = document.getElementById("planetModal");
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
 {% endblock %}

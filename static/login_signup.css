@@ -103,3 +103,8 @@ label {
 .forgot-password:hover {
     text-decoration: underline;
 }
+
+.alert {
+    color: red;
+    font-size: 12px;
+}

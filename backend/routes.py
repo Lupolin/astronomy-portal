@@ -68,12 +68,19 @@ def register_routes(app):
             # 在数据库中查找用户
             user = User.query.filter_by(username=username).first()
 
-            # 验证密码
+            # 如果找不到用户，显示 "未註冊" 的提示
+            if not user:
+                flash('The username is not registered. Please sign up.')
+                return redirect(url_for('login'))
+
+            # 如果用戶名存在，繼續檢查密碼
             if user and bcrypt.checkpw(password.encode('utf-8'), user.password.encode()):
+                # 如果密碼正確，登錄成功
                 session['username'] = username  # 记录用户会话
                 session.permanent = True  # 设置 session 为永久性
                 return redirect(url_for('home'))
             else:
+                # 如果密碼不正確，顯示 "帳號或密碼不正確"
                 flash('Invalid username or password')
                 return redirect(url_for('login'))
 
