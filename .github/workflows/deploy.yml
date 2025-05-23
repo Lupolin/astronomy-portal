@@ -21,7 +21,9 @@ jobs:
         key: ${{ secrets.EC2_KEY }}
         script: |
           cd /home/ec2-user/projects/python/astronomy-portal
+          git reset --hard HEAD   
           git pull origin master
           source venv/bin/activate
           pip install -r requirements.txt
           sudo systemctl restart astronomy-portal
+
