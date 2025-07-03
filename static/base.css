@@ -1,269 +1,363 @@
 /* 通用設置 */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: url('images/darkened_background.jpg') no-repeat center center/cover;  /* 背景圖片應用到body */
-    height: 100vh;  /* 背景圖片覆蓋整個頁面 */
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: url("images/darkened_background.jpg") no-repeat center
+    center/cover; /* 背景圖片應用到body */
+  height: 100vh; /* 背景圖片覆蓋整個頁面 */
 }
 
 a {
-    text-decoration: none; /* 移除底線 */
+  text-decoration: none; /* 移除底線 */
 }
 
 /* Header */
 header {
-    background: transparent;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    padding: 15px 0;
+  background: transparent;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 15px 0;
 }
 
 nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px; /* 設置選項之間的總間距 */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /* 設置選項之間的總間距 */
 }
 
 nav ul li {
-    position: relative;
-    display: flex;
-    justify-content: center; /* 讓分隔符和文字保持水平居中 */
-    align-items: center; /* 垂直對齊 */
-    padding: 0 20px; /* 設置選項左右的內間距 */
+  position: relative;
+  display: flex;
+  justify-content: center; /* 讓分隔符和文字保持水平居中 */
+  align-items: center; /* 垂直對齊 */
+  padding: 0 20px; /* 設置選項左右的內間距 */
 }
 
 nav ul li::before {
-    content: "|";
-    position: absolute;
-    left: -10px; /* 調整分隔符的橫向位置 */
-    color: white;
+  content: "|";
+  position: absolute;
+  left: -10px; /* 調整分隔符的橫向位置 */
+  color: white;
 }
 
 nav ul li:first-child::before {
-    content: ""; /* 移除第一個選項前的分隔符 */
+  content: ""; /* 移除第一個選項前的分隔符 */
 }
 
 nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
 }
 
 nav ul li a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 /* Hero Section */
 .hero {
-    height: 600px;  /* 調整hero區域的高度 */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    position: relative;
+  height: 600px; /* 調整hero區域的高度 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
 }
 
 .hero-content {
-    color: white;
+  color: white;
 }
 
 .hero-content h1 {
-    font-size: 48px;
-    margin-bottom: 20px;
+  font-size: 48px;
+  margin-bottom: 20px;
 }
 
 .hero-content p {
-    font-size: 20px;
-    margin-bottom: 30px;
+  font-size: 20px;
+  margin-bottom: 30px;
 }
 
 .hero-content button {
-    padding: 10px 20px;
-    font-size: 18px;
-    background-color: #ff6600;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #ff6600;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
 }
 
 .hero-content button:hover {
-    background-color: #e65c00;
+  background-color: #e65c00;
 }
 
 /***************************** Features Section *****************************/
 /* 調整 Features Section 並去掉重複定義的樣式 */
 .content-section {
-    display: flex;
-    justify-content: space-around;
-    gap: 20px; /* 設置元件之間的間隔 */
-    padding: 20px 10px;
-    background-color: transparent;
+  display: flex;
+  justify-content: space-around;
+  gap: 20px; /* 設置元件之間的間隔 */
+  padding: 20px 10px;
+  background-color: transparent;
 }
 
 .feature-card {
-    width: 250px; /* 固定卡片寬度 */
-    height: 330px; /* 調整卡片高度 */
-    text-align: center;
-    padding: 20px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease; /* 平滑過渡效果 */
-    transform: translateY(0);
+  width: 250px; /* 固定卡片寬度 */
+  height: 330px; /* 調整卡片高度 */
+  text-align: center;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease; /* 平滑過渡效果 */
+  transform: translateY(0);
 }
 
 .feature-card img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    transition: transform 0.3s ease; /* 圖片的平滑過渡 */
-    margin-bottom: 10px; /* 減少圖片和文字之間的間距 */
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  transition: transform 0.3s ease; /* 圖片的平滑過渡 */
+  margin-bottom: 10px; /* 減少圖片和文字之間的間距 */
 }
 
 .feature-card h2 {
-    font-size: 24px; /* 調整標題的字體大小 */
-    color: #333;
-    margin-bottom: 10px;
-    margin-top: -5px;
-    transition: color 0.3s ease; /* 文字顏色變化的過渡 */
+  font-size: 24px; /* 調整標題的字體大小 */
+  color: #333;
+  margin-bottom: 10px;
+  margin-top: -5px;
+  transition: color 0.3s ease; /* 文字顏色變化的過渡 */
 }
 
 .feature-card p {
-    font-size: 16px; /* 調整文本的字體大小 */
-    color: #555;
-    transition: color 0.3s ease;
+  font-size: 16px; /* 調整文本的字體大小 */
+  color: #555;
+  transition: color 0.3s ease;
 }
 
 /* Hover 效果 */
 .feature-card:hover {
-    background-color: #ff6600; /* 背景顏色變化 */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 增加陰影 */
-    transform: translateY(-10px); /* 卡片輕微上浮 */
+  background-color: #ff6600; /* 背景顏色變化 */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 增加陰影 */
+  transform: translateY(-10px); /* 卡片輕微上浮 */
 }
 
 /* 圖片放大效果 */
 
 .feature-card:hover h2 {
-    color: white; /* 標題文字變為白色 */
+  color: white; /* 標題文字變為白色 */
 }
 
 .feature-card:hover p {
-    color: white; /* 文字描述變為白色 */
+  color: white; /* 文字描述變為白色 */
 }
 /***************************** Features Section *****************************/
 
 /* Footer */
 footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 0px 0;
-    margin-top: 100px;
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 0px 0;
+  margin-top: 100px;
 }
 
 /***************************** Top-bar *****************************/
 /* 隱藏的Hover區域 */
 #hover-area {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 50px; /* 觸發區域的高度，可以根據需求調整 */
-    z-index: 999; /* 保證在所有內容上方，但在top bar下方 */
-    pointer-events: auto;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 50px; /* 觸發區域的高度，可以根據需求調整 */
+  z-index: 999; /* 保證在所有內容上方，但在top bar下方 */
+  pointer-events: auto;
 }
 
 /* 頂部Bar初始顯示 */
 #top-bar {
-    position: fixed;
-    top: 0; /* 一開始顯示在頂部 */
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    color: white;
-    text-align: center;
-    padding: 15px 0;
-    transition: top 0.3s ease-in-out;
-    z-index: 1000;
+  position: fixed;
+  top: 0; /* 一開始顯示在頂部 */
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  text-align: center;
+  padding: 15px 0;
+  transition: top 0.3s ease-in-out;
+  z-index: 1000;
 }
 
 /* 頁面內容的導航樣式 */
 #top-bar nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    gap: 15px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
 }
 
 #top-bar nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
 }
 
 #top-bar nav ul li a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 /* 當滑鼠移到 hover-area 區域時，top-bar 顯示 */
 #hover-area:hover + #top-bar {
-    top: 0;
+  top: 0;
 }
 
 /* 當滑鼠進入 top-bar 區域時保持顯示 */
 #top-bar:hover {
-    top: 0;
+  top: 0;
 }
 /***************************** Top-bar *****************************/
 
 /***************************** Pop-up *****************************/
 /* 模態的背景 */
 .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* 半透明背景 */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000; /* 確保模態在最上層 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* 半透明背景 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* 確保模態在最上層 */
 }
 
 /* 模態內容 */
 .modal-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    width: 80%;
-    max-width: 600px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    max-height: 80%; /* 防止內容過高 */
-    overflow-y: auto; /* 如果內容超過高度，自動添加滾動條 */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    margin: 10px auto; /* 確保內容在容器中水平居中 */
-    position: relative;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 600px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  max-height: 80%; /* 防止內容過高 */
+  overflow-y: auto; /* 如果內容超過高度，自動添加滾動條 */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  margin: 10px auto; /* 確保內容在容器中水平居中 */
+  position: relative;
 }
 
 /* 關閉按鈕 */
 .close-button {
-    display: block; /* 使按鈕成為區塊級元素 */
-    margin: 20px auto 0; /* 上方間距設為 20px，自動水平居中 */
-    font-size: 20px;
-    cursor: pointer;
-    position: relative; /* 使用相對定位，確保按鈕位置基於父元素進行調整 */
-    color: white;
-    background-color: #ff6600;
-    border-radius: 10px;
-    border: none;
+  display: block; /* 使按鈕成為區塊級元素 */
+  margin: 20px auto 0; /* 上方間距設為 20px，自動水平居中 */
+  font-size: 20px;
+  cursor: pointer;
+  position: relative; /* 使用相對定位，確保按鈕位置基於父元素進行調整 */
+  color: white;
+  background-color: #ff6600;
+  border-radius: 10px;
+  border: none;
 }
 /***************************** Pop-up *****************************/
+
+/***************************** RWD 響應式設計 *****************************/
+@media (max-width: 1024px) {
+  .content-section {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
+  .feature-card {
+    width: 45vw;
+    min-width: 220px;
+    max-width: 320px;
+    margin-bottom: 16px;
+  }
+  .hero {
+    height: 400px;
+  }
+  .hero-content h1 {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 768px) {
+  header,
+  #top-bar {
+    padding: 10px 0;
+  }
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+    background: rgba(0, 0, 0, 0.85);
+    padding: 10px 0;
+    border-radius: 0 0 10px 10px;
+  }
+  nav ul li {
+    padding: 0 10px;
+  }
+  .content-section {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .feature-card {
+    width: 90vw;
+    min-width: 180px;
+    max-width: 98vw;
+    height: auto;
+  }
+  .hero {
+    height: 260px;
+    padding: 20px 0;
+  }
+  .hero-content h1 {
+    font-size: 24px;
+  }
+  .hero-content p {
+    font-size: 16px;
+  }
+  .modal-content {
+    width: 98vw;
+    max-width: 98vw;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .feature-card {
+    width: 98vw;
+    min-width: 120px;
+    padding: 10px;
+  }
+  .hero {
+    height: 180px;
+    padding: 10px 0;
+  }
+  .hero-content h1 {
+    font-size: 16px;
+  }
+  .hero-content p {
+    font-size: 12px;
+  }
+  .hero-content button,
+  .close-button {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+  .modal-content {
+    width: 100vw;
+    max-width: 100vw;
+    padding: 4px;
+  }
+}
+/***************************** RWD 響應式設計 *****************************/
