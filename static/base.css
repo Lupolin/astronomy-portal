@@ -130,11 +130,29 @@ nav ul li a:hover {
 }
 
 .feature-card h2 {
-  font-size: 24px; /* 調整標題的字體大小 */
+  font-size: 24px;
   color: #333;
   margin-bottom: 10px;
   margin-top: -5px;
-  transition: color 0.3s ease; /* 文字顏色變化的過渡 */
+  transition: color 0.3s ease;
+}
+
+@media (max-width: 1024px) {
+  .feature-card h2 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .feature-card h2 {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .feature-card h2 {
+    font-size: 15px;
+  }
 }
 
 .feature-card p {
